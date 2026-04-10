@@ -265,3 +265,14 @@ img.profile {
     margin: 0;
     font-size: 0.95em;
 }
+
+/* ── Project card links ── */
+.projects article h2 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.projects article h2 a:hover {
+    color: var(--color-accent);
+}
