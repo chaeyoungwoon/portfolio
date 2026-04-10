@@ -1,4 +1,4 @@
-/* ── Base ── */
+/*Base*/
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -14,7 +14,7 @@ body {
     padding-bottom: 3em;
 }
 
-/* ── Glass utility ── */
+/* ── Glass utility ( i used claude to help me on this ) */ 
 .glass {
     background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(12px);
@@ -23,7 +23,7 @@ body {
     border-radius: 14px;
 }
 
-/* ── Nav ── */
+/*Navigation*/
 nav ul, nav li {
     display: contents;
 }
@@ -70,7 +70,7 @@ html {
     accent-color: var(--color-accent);
 }
 
-/* ── Links ── */
+/*Links*/
 a {
     color: oklch(75% 30% 250);
     text-decoration: none;
@@ -81,7 +81,7 @@ a:hover {
     color: #ffffff;
 }
 
-/* ── Typography ── */
+/*Typography*/
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.1;
     text-wrap: balance;
@@ -92,7 +92,7 @@ h1 {
     font-size: 400%;
 }
 
-/* ── Form ── */
+/*Form*/
 input, textarea, button {
     font: inherit;
 }
@@ -151,7 +151,7 @@ form button:hover {
     background: rgba(255, 255, 255, 0.18);
 }
 
-/* ── Projects grid ── */
+/*The Project Grid*/
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -189,7 +189,7 @@ form button:hover {
     font-size: 1.05rem;
 }
 
-/* ── Resume ── */
+/* Resume section*/
 .resume-section {
     background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(12px);
@@ -232,7 +232,7 @@ form button:hover {
     margin-bottom: 0.25em;
 }
 
-/* ── Profile image (homepage) ── */
+/*pfp*/
 img.profile {
     width: 160px;
     height: 160px;
@@ -242,7 +242,7 @@ img.profile {
     margin-bottom: 1em;
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
-/* ── Hero ── */
+/*main*/
 .hero {
     display: flex;
     align-items: center;
@@ -266,7 +266,7 @@ img.profile {
     font-size: 0.95em;
 }
 
-/* ── Project card links ── */
+/*project card links (used claude to help again) */
 .projects article h2 a {
     color: #ffffff;
     text-decoration: none;
