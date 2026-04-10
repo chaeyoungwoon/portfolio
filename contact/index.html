@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ethan Choi: Contact</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+
+    <nav>
+        <a href="/portfolio/">Home</a>
+        <a href="/portfolio/projects/">Projects</a>
+        <a class="current" href="/portfolio/contact/">Contact</a>
+        <a href="/portfolio/resume/">Resume</a>
+        <a href="https://github.com/chaeyoungwoon" target="_blank">GitHub</a>
+    </nav>
+
     <h1>Contact</h1>
-<form action="mailto:ealexchoi@gmail.com" method="POST" enctype="text/plain">
-  <label>Your Email
-    <input type="email" name="email" value="ealexchoi@gmail.com">
-  </label>
-  <label>Subject
-    <input name="subject" value="Hello">
-  </label>
-  <label>Message
-    <textarea name="body">Test message</textarea>
-  </label>
-  <button>Send</button>
-</form>
-  <nav>
-  <a href="/portfolio/">Home</a>
-  <a href="/portfolio/projects/">Projects</a>
-  <a class="current" href="/portfolio/contact/">Contact</a> <a href="/portfolio/resume/">Resume</a>
-  <a href="https://github.com/chaeyoungwoon" target="_blank">GitHub</a>
-</nav>
-    <h1>Contact</h1>
+
+    <form action="mailto:ealexchoi@gmail.com" method="POST" enctype="text/plain">
+        <label>
+            Your Email
+            <input type="email" name="email" placeholder="you@example.com">
+        </label>
+        <label>
+            Subject
+            <input type="text" name="subject" placeholder="Hello!">
+        </label>
+        <label>
+            Message
+            <textarea name="body" rows="6" placeholder="Your message here..."></textarea>
+        </label>
+        <button type="submit">Send</button>
+    </form>
+
 </body>
 </html>
