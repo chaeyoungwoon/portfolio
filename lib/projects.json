@@ -1,7 +1,7 @@
 [
   {
     "title": "EEG Emotion Decoder & Neural Environment",
-    "year": 2025,
+    "year": 2026,
     "image": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600",
     "description": "Cross-subject EEG emotion classifier using EEGNet on the GAMEEMO dataset. Achieved 54.6% accuracy on LOSO cross-validation vs. 25% chance baseline."
   },
