@@ -1,0 +1,44 @@
+[
+  {
+    "title": "EEG Emotion Decoder & Neural Environment",
+    "year": 2025,
+    "image": "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600",
+    "description": "Cross-subject EEG emotion classifier using EEGNet on the GAMEEMO dataset. Achieved 54.6% accuracy on LOSO cross-validation vs. 25% chance baseline."
+  },
+  {
+    "title": "AutoDS: Autonomous Data Scientist",
+    "year": 2025,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Multi-agent AI architecture project."
+  },
+  {
+    "title": "E4E Geospatial Segmentation Pipeline",
+    "year": 2025,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Scaled geospatial segmentation pipelines to multi-TB Sentinel/UAV imagery, cutting preprocessing time by 60% via parallelized NDVI/NDWI feature extraction."
+  },
+  {
+    "title": "E-Commerce Integration",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built brand identity and Shopify integration for premium shapewear utilizing strictly nylon and spandex with 3-level adjustable straps."
+  },
+  {
+    "title": "LLNL ECG Arrhythmia Classifiers",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Trained binary and 5-class arrhythmia classifiers on 14,000+ ECG samples using XGBoost."
+  },
+  {
+    "title": "KAST.gg Retention SQL Analysis",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Surfaced retention drivers from SQL analysis of 10,000+ user engagement lifecycles."
+  },
+  { "title": "Placeholder 7", "year": 2023, "image": "https://vis-society.github.io/labs/2/images/empty.svg", "description": "Placeholder" },
+  { "title": "Placeholder 8", "year": 2023, "image": "https://vis-society.github.io/labs/2/images/empty.svg", "description": "Placeholder" },
+  { "title": "Placeholder 9", "year": 2022, "image": "https://vis-society.github.io/labs/2/images/empty.svg", "description": "Placeholder" },
+  { "title": "Placeholder 10", "year": 2022, "image": "https://vis-society.github.io/labs/2/images/empty.svg", "description": "Placeholder" },
+  { "title": "Placeholder 11", "year": 2021, "image": "https://vis-society.github.io/labs/2/images/empty.svg", "description": "Placeholder" },
+  { "title": "Placeholder 12", "year": 2021, "image": "https://vis-society.github.io/labs/2/images/empty.svg", "description": "Placeholder" }
+]

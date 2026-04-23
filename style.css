@@ -138,3 +138,34 @@ form button {
     object-fit: cover;
     border-radius: 8px;
 }
+
+/* --- STEP 5: GitHub Stats Grid Styling  --- */
+.github-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    text-align: center;
+    background: color-mix(in oklch, canvas, transparent 80%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in oklch, canvastext, transparent 85%);
+    border-radius: 14px;
+    padding: 1.5em;
+    margin-bottom: 2em;
+}
+
+.github-stats dt {
+    grid-row: 1; /* Forces headers to the top row [cite: 466] */
+    font-weight: bold;
+    color: var(--color-accent);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.github-stats dd {
+    grid-row: 2; /* Forces numbers to the second row [cite: 467] */
+    margin: 0;
+    font-size: 2em;
+    color: canvastext;
+}
