@@ -9,24 +9,17 @@ let query = '';
 let selectedIndex = -1;
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-function filterAndRender() {
+// Handles search bar updates: Redraws both pie chart and list
+function setQuery(newQuery) {
+    query = newQuery;
+    selectedIndex = -1; 
+    
     let filtered = projects.filter((project) => {
         let values = Object.values(project).join('\n').toLowerCase();
         return values.includes(query.toLowerCase());
     });
 
     renderPieChart(filtered);
-
-    if (selectedIndex !== -1) {
-        let rolledData = d3.rollups(filtered, v => v.length, d => d.year);
-        if (rolledData[selectedIndex]) {
-            let selectedYear = rolledData[selectedIndex][0];
-            filtered = filtered.filter(project => project.year === selectedYear);
-        } else {
-            selectedIndex = -1;
-        }
-    }
-
     renderProjects(filtered, projectsContainer, 'h2');
     
     const titleElement = document.querySelector('.projects-title');
@@ -35,10 +28,10 @@ function filterAndRender() {
     }
 }
 
+// Draws the pie chart and handles click events (Updates CSS and list ONLY)
 function renderPieChart(projectsGiven) {
     let newSVG = d3.select('svg');
     newSVG.selectAll('path').remove();
-    
     let legend = d3.select('.legend');
     legend.selectAll('li').remove(); 
 
@@ -58,45 +51,70 @@ function renderPieChart(projectsGiven) {
     let newArcs = newArcData.map((d) => arcGenerator(d));
 
     newArcs.forEach((arc, i) => {
-        newSVG
-            .append('path')
+        newSVG.append('path')
             .attr('d', arc)
             .attr('fill', colors(i))
-            .attr('class', i === selectedIndex ? 'selected' : '')
             .on('click', () => {
                 selectedIndex = selectedIndex === i ? -1 : i;
                 
-                newSVG.selectAll('path')
-                    .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
-                legend.selectAll('li')
-                    .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+                // ONLY update CSS classes, do NOT redraw the pie chart
+                newSVG.selectAll('path').attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+                legend.selectAll('li').attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
                 
-                filterAndRender(); 
+                // Filter the project list
+                let filtered = projects.filter((project) => {
+                    let values = Object.values(project).join('\n').toLowerCase();
+                    return values.includes(query.toLowerCase());
+                });
+                
+                if (selectedIndex !== -1) {
+                    let selectedYear = newData[selectedIndex].label;
+                    filtered = filtered.filter(p => p.year === selectedYear);
+                }
+
+                renderProjects(filtered, projectsContainer, 'h2');
+                
+                const titleElement = document.querySelector('.projects-title');
+                if (titleElement) {
+                    titleElement.textContent = `${filtered.length} Projects`;
+                }
             });
     });
 
     newData.forEach((d, i) => {
         legend.append('li')
-            .attr('style', `--color:${colors(i)}`)
-            .attr('class', i === selectedIndex ? 'selected' : '')
+            .style('--color', colors(i))
             .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
             .on('click', () => {
                 selectedIndex = selectedIndex === i ? -1 : i;
-                newSVG.selectAll('path')
-                    .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
-                legend.selectAll('li')
-                    .attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
-                filterAndRender();
+                
+                newSVG.selectAll('path').attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+                legend.selectAll('li').attr('class', (_, idx) => (idx === selectedIndex ? 'selected' : ''));
+                
+                let filtered = projects.filter((project) => {
+                    let values = Object.values(project).join('\n').toLowerCase();
+                    return values.includes(query.toLowerCase());
+                });
+                
+                if (selectedIndex !== -1) {
+                    let selectedYear = newData[selectedIndex].label;
+                    filtered = filtered.filter(p => p.year === selectedYear);
+                }
+
+                renderProjects(filtered, projectsContainer, 'h2');
+                
+                const titleElement = document.querySelector('.projects-title');
+                if (titleElement) {
+                    titleElement.textContent = `${filtered.length} Projects`;
+                }
             });
     });
 }
 
 searchInput.addEventListener('input', (event) => {
-    query = event.target.value;
-    selectedIndex = -1; 
-    filterAndRender();
+    setQuery(event.target.value);
 });
 
 if (projectsContainer) {
-    filterAndRender();
+    setQuery('');
 }

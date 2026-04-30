@@ -204,30 +204,41 @@ form button {
 }
 
 .swatch {
-    width: 1em; [cite: 913]
-    height: 1em; [cite: 913]
-    background-color: var(--color); [cite: 918]
-    border-radius: 50%; [cite: 919]
-    display: inline-block; [cite: 921]
+    width: 1em;
+    height: 1em;
+    background-color: var(--color); /* Pulls the color from the JS */
+    border-radius: 50%; /* Makes it a circle */
+    display: inline-block; /* Required for span width/height to work */
+    margin-right: 0.5em; /* Adds a tiny bit of space before the text */
 }
 
+s/* --- Interactivity: Hover Fading [cite: 1265-1269] --- */
 svg {
-    transition: all 300ms;
+    transition: all 300ms ease;
 }
 
-svg:has(path:hover) path:not(:hover) { [cite: 1261]
-    opacity: 0.5; [cite: 1268]
+/* Fades out all OTHER paths when one is hovered */
+/* (Lowered from 0.5 to 0.3 so the fade is much more obvious on dark mode) */
+svg:has(path:hover) path:not(:hover) {
+    opacity: 0.3; 
 }
 
 path {
-    transition: 300ms; [cite: 1276]
-    cursor: pointer; [cite: 1358]
+    transition: 300ms ease;
+    cursor: pointer;
 }
 
+/* Optional: Make the hovered wedge actively pop out slightly */
+path:hover {
+    opacity: 1;
+    filter: brightness(1.2); 
+}
+
+/* --- Interactivity: Selection [cite: 1315-1320] --- */
 .selected {
-    --color: oklch(60% 45% 0) !important; [cite: 1316]
+    --color: oklch(60% 45% 0) !important;
 }
 
-.selected:is(path) { [cite: 1317]
-    fill: var(--color); [cite: 1318]
+path.selected {
+    fill: var(--color);
 }
