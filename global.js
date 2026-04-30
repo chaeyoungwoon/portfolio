@@ -1,11 +1,9 @@
 console.log("IT'S ALIVE!");
 
-// Helper for selecting elements
 export function $$(selector, context = document) {
     return Array.from(context.querySelectorAll(selector));
 }
 
-// --- STEP 3: AUTOMATIC NAVIGATION ---
 let pages = [
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
@@ -27,14 +25,12 @@ for (let p of pages) {
     a.href = url;
     a.textContent = p.title;
 
-    // Highlight current page and handle external links
     a.classList.toggle('current', a.host === location.host && a.pathname === location.pathname);
     if (a.host !== location.host) a.target = "_blank";
 
     nav.append(a);
 }
 
-// --- STEP 4: DARK MODE SWITCHER ---
 document.body.insertAdjacentHTML('afterbegin', `
     <label class="color-scheme">
         Theme:
@@ -50,7 +46,7 @@ const select = document.querySelector('#theme-select');
 function setColorScheme(color) {
     document.documentElement.style.setProperty('color-scheme', color);
     select.value = color;
-    localStorage.colorScheme = color; // Save preference
+    localStorage.colorScheme = color; 
 }
 
 if ("colorScheme" in localStorage) {
@@ -59,7 +55,6 @@ if ("colorScheme" in localStorage) {
 
 select.addEventListener('input', (e) => setColorScheme(e.target.value));
 
-// --- STEP 5: BETTER CONTACT FORM ---
 let form = document.querySelector('form');
 form?.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -70,8 +65,6 @@ form?.addEventListener('submit', (e) => {
     }
     location.href = url;
 });
-
-// --- LAB 4 ADDITIONS ---
 
 export async function fetchJSON(url) {
     try {
@@ -88,7 +81,7 @@ export async function fetchJSON(url) {
 
 export function renderProjects(project, containerElement, headingLevel = 'h2') {
     if (!containerElement) return;
-    containerElement.innerHTML = ''; // Clear existing content [cite: 236-237]
+    containerElement.innerHTML = ''; 
     
     for (let p of project) {
         const article = document.createElement('article');
@@ -96,7 +89,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
             <${headingLevel}>${p.title}</${headingLevel}>
             <img src="${p.image}" alt="${p.title}">
             <p>${p.description}</p>
-            <p class="project-year" style="font-size: 0.8em; color: gray;">${p.year}</p>
+            <p class="project-year" style="font-family: Baskerville, serif; font-variant-numeric: oldstyle-nums; color: gray;">&copy; ${p.year}</p>
         `;
         containerElement.appendChild(article);
     }

@@ -1,10 +1,8 @@
-/* --- STEP 4.1: Master Switch [cite: 252-254] --- */
 html {
     color-scheme: light dark;
     --color-accent: oklch(65% 50% 0);
 }
 
-/* --- STEP 4.3: Theme Switcher [cite: 356-359] --- */
 .color-scheme {
     position: absolute;
     top: 1rem;
@@ -15,7 +13,6 @@ html {
     z-index: 1000;
 }
 
-/* --- BASE STYLES --- */
 body {
     font: 100%/1.5 system-ui;
     max-width: 100ch;
@@ -24,12 +21,10 @@ body {
     padding-bottom: 3em;
     background: canvas; 
     color: canvastext;
-    /* Adaptive blue gradient [cite: 312-313] */
     background-image: linear-gradient(135deg, color-mix(in oklch, canvas, #1a1a2e 40%), color-mix(in oklch, canvas, #0f3460 10%));
     background-attachment: fixed;
 }
 
-/* --- RESTORED HERO & PFP HEADER --- */
 .hero {
     display: flex;
     align-items: center;
@@ -58,7 +53,6 @@ img.profile {
     font-size: 1.05em;
 }
 
-/* --- ADAPTIVE GLASS PANELS [cite: 312-313] --- */
 nav, form, .projects article, .resume-section {
     background: color-mix(in oklch, canvas, transparent 80%);
     backdrop-filter: blur(12px);
@@ -67,7 +61,6 @@ nav, form, .projects article, .resume-section {
     border-radius: 14px;
 }
 
-/* --- NAVIGATION --- */
 nav {
     display: flex;
     margin-top: 1em;
@@ -90,7 +83,6 @@ nav a.current {
     border-bottom: 0.3em solid var(--border-color);
 }
 
-/* --- FORMS --- */
 form {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -121,7 +113,6 @@ form button {
     border: none;
 }
 
-/* --- PROJECTS GRID --- */
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -139,7 +130,6 @@ form button {
     border-radius: 8px;
 }
 
-/* --- STEP 5: GitHub Stats Grid Styling  --- */
 .github-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -155,7 +145,7 @@ form button {
 }
 
 .github-stats dt {
-    grid-row: 1; /* Forces headers to the top row [cite: 466] */
+    grid-row: 1; 
     font-weight: bold;
     color: var(--color-accent);
     font-size: 0.9em;
@@ -164,8 +154,80 @@ form button {
 }
 
 .github-stats dd {
-    grid-row: 2; /* Forces numbers to the second row [cite: 467] */
+    grid-row: 2; 
     margin: 0;
     font-size: 2em;
     color: canvastext;
+}
+
+.searchBar {
+    width: 100%;
+    padding: 0.75em;
+    margin-bottom: 1.5em;
+    border-radius: 8px;
+    border: 1px solid color-mix(in oklch, canvastext, transparent 80%);
+    background: color-mix(in oklch, canvas, canvastext 5%);
+    color: canvastext;
+    font-size: 1rem;
+}
+
+.container {
+    display: flex; [cite: 966]
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+#projects-pie-plot {
+    max-width: 20em; [cite: 623]
+    margin-block: 2em; [cite: 624]
+    overflow: visible; [cite: 626]
+}
+
+.legend {
+    display: grid; [cite: 923]
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); [cite: 925]
+    gap: 1em;
+    flex: 1; [cite: 975]
+    list-style: none;
+    padding: 1em;
+    background: color-mix(in oklch, canvas, transparent 80%);
+    border: 1px solid color-mix(in oklch, canvastext, transparent 85%);
+    border-radius: 14px;
+}
+
+.legend li {
+    display: flex; [cite: 927]
+    align-items: center; [cite: 927]
+    gap: 0.5em; [cite: 927]
+    font-size: 0.9em;
+}
+
+.swatch {
+    width: 1em; [cite: 913]
+    height: 1em; [cite: 913]
+    background-color: var(--color); [cite: 918]
+    border-radius: 50%; [cite: 919]
+    display: inline-block; [cite: 921]
+}
+
+svg {
+    transition: all 300ms;
+}
+
+svg:has(path:hover) path:not(:hover) { [cite: 1261]
+    opacity: 0.5; [cite: 1268]
+}
+
+path {
+    transition: 300ms; [cite: 1276]
+    cursor: pointer; [cite: 1358]
+}
+
+.selected {
+    --color: oklch(60% 45% 0) !important; [cite: 1316]
+}
+
+.selected:is(path) { [cite: 1317]
+    fill: var(--color); [cite: 1318]
 }
