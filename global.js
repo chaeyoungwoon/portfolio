@@ -9,6 +9,7 @@ let pages = [
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact' },
     { url: 'resume/', title: 'Resume' },
+    { url: 'meta/', title: 'Meta' },
     { url: 'https://github.com/chaeyoungwoon', title: 'GitHub' }
 ];
 
@@ -46,7 +47,7 @@ const select = document.querySelector('#theme-select');
 function setColorScheme(color) {
     document.documentElement.style.setProperty('color-scheme', color);
     select.value = color;
-    localStorage.colorScheme = color; 
+    localStorage.colorScheme = color;
 }
 
 if ("colorScheme" in localStorage) {
@@ -81,8 +82,8 @@ export async function fetchJSON(url) {
 
 export function renderProjects(project, containerElement, headingLevel = 'h2') {
     if (!containerElement) return;
-    containerElement.innerHTML = ''; 
-    
+    containerElement.innerHTML = '';
+
     for (let p of project) {
         const article = document.createElement('article');
         article.innerHTML = `
