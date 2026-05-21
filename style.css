@@ -75,6 +75,7 @@ nav a {
     text-decoration: none;
     color: inherit;
     transition: 0.2s;
+    text-align: center;
 }
 
 nav a.current {
@@ -238,7 +239,7 @@ path.selected {
     fill: var(--color);
 }
 
-/* ── Lab 6: Meta page ──────────────────────────────────────────────────────── */
+/* ── Lab 6: Meta stats box ───────────────────────────────────────────────── */
 
 dl.stats {
     display: flex;
@@ -357,4 +358,126 @@ circle.selected {
     font-size: 0.9em;
     color: color-mix(in oklch, canvastext, transparent 30%);
     margin-bottom: 0.5em;
+}
+
+/* ── Lab 8: Time slider ──────────────────────────────────────────────────── */
+
+.commit-slider-label {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1.5em;
+    font-size: 0.95em;
+}
+
+.commit-slider-label input[type="range"] {
+    flex: 1;
+    max-width: 500px;
+}
+
+#commit-time {
+    font-size: 0.9em;
+    color: color-mix(in oklch, canvastext, transparent 30%);
+    white-space: nowrap;
+}
+
+/* Entry transition for new circles */
+@starting-style {
+    circle { r: 0; }
+}
+
+/* ── Lab 8: File unit visualization ──────────────────────────────────────── */
+
+#files {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 0.75em 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-inline: 0;
+    padding: 0;
+}
+
+#files > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+}
+
+#files dt {
+    grid-column: 1;
+    font-size: 0.85em;
+    word-break: break-all;
+    padding-top: 0.4em;
+}
+
+#files dt code {
+    background: color-mix(in oklch, canvas, canvastext 8%);
+    padding: 0.15em 0.5em;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+#files dd {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    align-content: start;
+    gap: 0.15em;
+    padding-top: 0.4em;
+    margin-left: 0;
+}
+
+.loc {
+    display: block;
+    width: 0.5em;
+    aspect-ratio: 1;
+    background: var(--color, steelblue);
+    border-radius: 50%;
+}
+
+/* ── Lab 8: Scrollytelling ───────────────────────────────────────────────── */
+
+#scrolly-1 {
+    position: relative;
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2em;
+}
+
+#scrolly-1 > * {
+    flex: 1;
+}
+
+#scatter-story {
+    position: relative;
+}
+
+#scatter-plot {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.step {
+    padding-bottom: 5em;
+}
+
+.step p {
+    background: color-mix(in oklch, canvas, transparent 75%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in oklch, canvastext, transparent 85%);
+    border-radius: 10px;
+    padding: 1em 1.2em;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.step a {
+    color: var(--color-accent);
+    text-decoration: underline;
 }
